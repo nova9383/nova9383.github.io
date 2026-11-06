@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>b站网页版-电脑端入口_网页版弹幕与视频观看</title>
+<meta name="description" content="b站网页版电脑端入口说明，介绍在浏览器中使用b站网页版观看视频、发送弹幕、浏览分区与账号登录的常见方式，帮助快速进入网页版页面并开始观看。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fb7299'/%3E%3Crect x='12' y='20' width='40' height='26' rx='7' fill='%23ffffff'/%3E%3Cpath d='M22 14l6 6M42 14l-6 6' stroke='%23ffffff' stroke-width='4' stroke-linecap='round'/%3E%3Crect x='20' y='28' width='8' height='7' rx='3' fill='%23fb7299'/%3E%3Crect x='36' y='28' width='8' height='7' rx='3' fill='%23fb7299'/%3E%3C/svg%3E">
+<style>
+:root{
+  --pink:#fb7299;
+  --pink-deep:#e05a80;
+  --blue:#00a1d6;
+  --ink:#1b1d22;
+  --ink-2:#4a4f5a;
+  --ink-3:#7b818c;
+  --line:#e8eaf0;
+  --bg:#f7f8fb;
+  --card:#ffffff;
+  --radius:16px;
+  --maxw:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+/* ---------- header ---------- */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.head-inner{
+  display:flex;align-items:center;gap:22px;
+  height:64px;
+}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-mark{
+  width:38px;height:38px;border-radius:11px;
+  background:linear-gradient(135deg,#fb7299,#ff9ab5);
+  display:grid;place-items:center;
+  box-shadow:0 4px 12px rgba(251,114,153,.35);
+}
+.brand-mark svg{width:24px;height:24px}
+.brand-text{
+  font-size:18px;font-weight:800;letter-spacing:.5px;
+  color:var(--ink);white-space:nowrap;
+}
+nav.main{display:flex;gap:4px;margin-left:8px;flex-wrap:wrap}
+nav.main a{
+  font-size:14.5px;color:var(--ink-2);font-weight:500;
+  padding:7px 12px;border-radius:9px;transition:.18s;
+  white-space:nowrap;
+}
+nav.main a:hover{background:#ffeef3;color:var(--pink-deep)}
+.head-cta{
+  margin-left:auto;display:inline-flex;align-items:center;gap:7px;
+  background:var(--pink);color:#fff;font-weight:600;font-size:14px;
+  padding:9px 18px;border-radius:24px;
+  box-shadow:0 4px 14px rgba(251,114,153,.4);
+  transition:.18s;white-space:nowrap;
+}
+.head-cta:hover{background:var(--pink-deep);transform:translateY(-1px)}
+
+/* ---------- hero ---------- */
+.hero{
+  background:
+    radial-gradient(900px 380px at 82% -10%,rgba(251,114,153,.16),transparent 70%),
+    radial-gradient(700px 340px at 6% 0%,rgba(0,161,214,.12),transparent 70%),
+    #fff;
+  border-bottom:1px solid var(--line);
+  padding:52px 0 56px;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:12.5px;font-weight:700;letter-spacing:.6px;
+  color:var(--pink-deep);background:#ffeef3;
+  padding:5px 13px;border-radius:20px;margin-bottom:16px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--pink)}
+h1{
+  font-size:clamp(28px,4.2vw,44px);
+  font-weight:900;line-height:1.22;letter-spacing:.5px;
+  color:var(--ink);
+}
+.hero-lead{
+  margin-top:18px;font-size:16px;color:var(--ink-2);max-width:33em;
+}
+.hero-lead strong{color:var(--ink);font-weight:700}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:15px;font-weight:700;padding:12px 24px;border-radius:26px;
+  transition:.18s;border:1.5px solid transparent;
+}
+.btn-primary{
+  background:var(--pink);color:#fff;
+  box-shadow:0 8px 22px rgba(251,114,153,.35);
+}
+.btn-primary:hover{background:var(--pink-deep);transform:translateY(-2px)}
+.btn-ghost{
+  background:#fff;color:var(--ink);border-color:var(--line);
+}
+.btn-ghost:hover{border-color:var(--pink);color:var(--pink-deep)}
+.btn[aria-disabled="true"]{
+  pointer-events:none;opacity:.85;
+  background:#fff;color:var(--ink);border-color:var(--line);
+  box-shadow:none;
+}
+.hero-stats{
+  display:flex;gap:26px;margin-top:34px;flex-wrap:wrap;
+}
+.hero-stats div{font-size:13px;color:var(--ink-3)}
+.hero-stats b{display:block;font-size:19px;color:var(--ink);font-weight:800;letter-spacing:.3px}
+
+/* hero visual */
+.hero-visual{
+  position:relative;border-radius:20px;overflow:hidden;
+  background:linear-gradient(150deg,#fff0f5,#eaf6fb 60%,#f2f4ff);
+  border:1px solid #f0e2e8;
+  padding:16px;
+  box-shadow:0 18px 44px rgba(40,50,80,.10);
+}
+.player{
+  border-radius:12px;overflow:hidden;background:#15171d;
+  aspect-ratio:16/10;position:relative;
+}
+.player svg{width:100%;height:100%}
+.danmu-bar{
+  position:absolute;left:0;right:0;top:9px;
+  display:flex;flex-direction:column;gap:5px;padding:0 10px;
+  font-size:11px;color:#fff;pointer-events:none;
+}
+.danmu-bar span{
+  background:rgba(0,0,0,.42);backdrop-filter:blur(2px);
+  border-radius:12px;padding:2px 9px;width:fit-content;
+  animation:slide 9s linear infinite;
+}
+.danmu-bar span:nth-child(2){animation-delay:-3s;opacity:.9}
+.danmu-bar span:nth-child(3){animation-delay:-6s;opacity:.8}
+@keyframes slide{
+  0%{transform:translateX(-10%)}
+  100%{transform:translateX(52%)}
+}
+.panel-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;
+}
+.mini-card{
+  background:#fff;border-radius:10px;padding:9px 11px;
+  border:1px solid #f1e7ec;display:flex;align-items:center;gap:8px;
+  font-size:12px;color:var(--ink-2);font-weight:600;
+}
+.mini-card .ic{
+  width:22px;height:22px;border-radius:7px;flex-shrink:0;
+  display:grid;place-items:center;background:#ffeef3;color:var(--pink-deep);
+}
+.mini-card .ic.blue{background:#e6f6fc;color:#0086b3}
+
+/* ---------- section base ---------- */
+section.block{padding:56px 0}
+.sec-head{margin-bottom:30px;max-width:44em}
+.sec-tag{
+  font-size:12.5px;font-weight:800;letter-spacing:1.4px;
+  color:var(--pink-deep);text-transform:uppercase;
+}
+h2{
+  font-size:clamp(21px,2.6vw,27px);font-weight:800;
+  margin-top:8px;letter-spacing:.3px;line-height:1.35;
+}
+.sec-desc{margin-top:10px;color:var(--ink-2);font-size:15px}
+
+/* entry cards */
+.entry-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+.entry-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 22px;transition:.2s;position:relative;overflow:hidden;
+}
+.entry-card::before{
+  content:"";position:absolute;inset:0 auto auto 0;height:3px;width:100%;
+  background:linear-gradient(90deg,var(--pink),#ffb3c6);
+  opacity:0;transition:.2s;
+}
+.entry-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(40,50,80,.09)}
+.entry-card:hover::before{opacity:1}
+.entry-ic{
+  width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+  background:#ffeef3;color:var(--pink-deep);margin-bottom:15px;
+}
+.entry-ic.blue{background:#e6f6fc;color:#0086b3}
+.entry-ic.violet{background:#eff0ff;color:#5b5bd6}
+.entry-card h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.entry-card p{font-size:14px;color:var(--ink-2)}
+.entry-card .go{
+  margin-top:14px;font-size:13.5px;font-weight:700;color:var(--pink-deep);
+  display:inline-flex;align-items:center;gap:5px;
+}
+
+/* zones */
+.zones{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.zone-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.zone{
+  border:1px solid var(--line);border-radius:14px;padding:18px 16px;
+  background:linear-gradient(180deg,#fff,#fcfcfe);
+  transition:.18s;
+}
+.zone:hover{border-color:#ffd0de;background:#fff8fa}
+.zone-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.zone b{font-size:15px;font-weight:800}
+.zone .num{
+  font-size:11.5px;font-weight:700;color:var(--pink-deep);
+  background:#ffeef3;border-radius:7px;padding:1px 7px;
+}
+.zone p{font-size:13px;color:var(--ink-2);line-height:1.65}
+.zone-list{
+  display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;
+}
+.chip{
+  font-size:12.5px;color:var(--ink-2);background:#fff;
+  border:1px solid var(--line);border-radius:20px;padding:4px 12px;
+}
+.chip.on{background:#ffeef3;border-color:#ffd0de;color:var(--pink-deep);font-weight:600}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:s}
+.step{
+  padding:0 26px;border-left:1px solid var(--line);
+}
+.step:first-child{border-left:0;padding-left:0}
+.step-no{
+  font-size:13px;font-weight:900;color:var(--pink);
+  letter-spacing:1px;margin-bottom:9px;
+}
+.step h3{font-size:16.5px;font-weight:800;margin-bottom:7px}
+.step p{font-size:14px;color:var(--ink-2)}
+
+/* faq */
+.faq-list{display:grid;gap:12px;max-width:900px}
+details{
+  background:#fff;border:1px solid var(--line);border-radius:13px;
+  padding:16px 20px;transition:.18s;
+}
+details[open]{border-color:#ffd0de;box-shadow:0 8px 22px rgba(251,114,153,.08)}
+summary{
+  cursor:pointer;font-weight:700;font-size:15.5px;list-style:none;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"+";font-size:19px;color:var(--pink);font-weight:400;line-height:1;
+  transition:.2s;flex-shrink:0;
+}
+details[open] summary::after{content:"−"}
+details p{margin-top:10px;font-size:14px;color:var(--ink-2);line-height:1.8}
+
+/* note */
+.note-band{
+  background:linear-gradient(120deg,#fff3f7,#eef8fc);
+  border-radius:20px;padding:34px 34px;border:1px solid #f4e4ea;
+  display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;
+}
+.note-band h2{font-size:21px;margin:0}
+.note-band p{font-size:14px;color:var(--ink-2);margin-top:8px;max-width:44em}
+
+/* footer */
+footer.site{
+  background:#fff;border-top:1px solid var(--line);
+  padding:38px 0 26px;margin-top:8px;
+}
+.foot-top{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:flex-start}
+.foot-brand{max-width:340px}
+.foot-brand .brand-text{font-size:16.5px}
+.foot-brand p{font-size:13px;color:var(--ink-3);margin-top:10px;line-height:1.75}
+.foot-links{display:flex;gap:48px;flex-wrap:wrap}
+.foot-links h4{font-size:13px;font-weight:800;color:var(--ink);margin-bottom:10px}
+.foot-links ul{list-style:none;display:grid;gap:7px}
+.foot-links a{font-size:13px;color:var(--ink-3)}
+.foot-links a:hover{color:var(--pink-deep)}
+.foot-bottom{
+  margin-top:28px;padding-top:18px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
+  font-size:12.5px;color:var(--ink-3);
+}
+
+/* responsive */
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-visual{max-width:560px}
+  .entry-grid{grid-template-columns:repeat(2,1fr)}
+  .zone-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr;gap:24px}
+  .step{border-left:0;padding:0;border-top:1px solid var(--line);padding-top:20px}
+  .step:first-child{border-top:0;padding-top:0}
+  .note-band{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  .head-inner{height:auto;flex-wrap:wrap;padding:10px 0;gap:10px}
+  nav.main{order:3;width:100%;overflow-x:auto;flex-wrap:nowrap;margin-left:0;padding-bottom:2px}
+  nav.main::-webkit-scrollbar{display:none}
+  .head-cta{margin-left:auto;padding:8px 15px;font-size:13px}
+  .hero{padding:34px 0 40px}
+  .hero-stats{gap:18px}
+  .entry-grid{grid-template-columns:1fr}
+  .zone-grid{grid-template-columns:1fr 1fr}
+  .panel-row{grid-template-columns:1fr}
+  .foot-links{gap:30px}
+  section.block{padding:40px 0}
+}
+@media(max-width:420px){
+  .zone-grid{grid-template-columns:1fr}
+  .brand-text{font-size:16px}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <a class="brand" href="#top" aria-label="b站网页版 首页">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="20" width="44" height="28" rx="8" fill="#ffffff"/>
+          <path d="M21 13l7 7M43 13l-7 7" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+          <rect x="19" y="29" width="9" height="7" rx="3" fill="#fb7299"/>
+          <rect x="36" y="29" width="9" height="7" rx="3" fill="#fb7299"/>
+        </svg>
+      </span>
+      <span class="brand-text">b站网页版</span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#entry">进入方式</a>
+      <a href="#zones">分区浏览</a>
+      <a href="#steps">使用步骤</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a class="head-cta" href="#entry">
+      打开网页版
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>电脑浏览器 · 视频与弹幕</span>
+        <h1>b站网页版</h1>
+        <p class="hero-lead">
+          b站网页版是哔哩哔哩在电脑浏览器中的访问形态，打开浏览器输入网址即可观看视频、浏览分区、发送弹幕与管理账号。不需要额外安装客户端，登录后收藏、历史记录与关注动态会与账号同步。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#entry">
+            查看入口方式
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#zones">分区浏览</a>
+          <a class="btn" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 12l5 5 5-5M5 20h14"/></svg>
+            下载
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div><b>电脑浏览器</b>无需安装客户端</div>
+          <div><b>弹幕 + 评论</b>边看边互动</div>
+          <div><b>账号同步</b>收藏与历史跟人走</div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="player">
+          <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#22252e"/>
+                <stop offset="100%" stop-color="#12141a"/>
+              </linearGradient>
+              <linearGradient id="pg2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fb7299"/>
+                <stop offset="100%" stop-color="#ffb3c6"/>
+              </linearGradient>
+            </defs>
+            <rect width="480" height="300" fill="url(#pg)"/>
+            <circle cx="392" cy="52" r="80" fill="#fb7299" opacity=".18"/>
+            <circle cx="70" cy="260" r="90" fill="#00a1d6" opacity=".14"/>
+            <rect x="58" y="96" width="150" height="10" rx="5" fill="#ffffff" opacity=".22"/>
+            <rect x="58" y="118" width="104" height="10" rx="5" fill="#ffffff" opacity=".14"/>
+            <circle cx="240" cy="160" r="38" fill="url(#pg2)" opacity=".92"/>
+            <path d="M230 144l26 16-26 16z" fill="#fff"/>
+            <rect x="58" y="248" width="230" height="6" rx="3" fill="#ffffff" opacity=".18"/>
+            <rect x="58" y="248" width="128" height="6" rx="3" fill="#fb7299"/>
+            <circle cx="186" cy="251" r="7" fill="#fff"/>
+            <rect x="330" y="238" width="96" height="26" rx="13" fill="#ffffff" opacity=".12"/>
+            <rect x="346" y="248" width="46" height="6" rx="3" fill="#ffffff" opacity=".5"/>
+          </svg>
+          <div class="danmu-bar">
+            <span>这段剪辑太顺了</span>
+            <span>前排打卡</span>
+            <span>网页版弹幕也流畅</span>
+          </div>
+        </div>
+        <div class="panel-row">
+          <div class="mini-card">
+            <span class="ic">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3z"/><path d="M8 5v14"/></svg>
+            </span>
+            分区与排行
+          </div>
+          <div class="mini-card">
+            <span class="ic blue">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+            </span>
+            我的关注
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRY -->
+  <section class="block" id="entry">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-tag">Entry</span>
+        <h2>进入 b站网页版的几种常见方式</h2>
+        <p class="sec-desc">网页版的核心是浏览器访问，入口形式不同，进入后的权限与功能范围也会略有差别。按自己当下的使用场景选择即可。</p>
+      </div>
+      <div class="entry-grid">
+
+        <article class="entry-card">
+          <div class="entry-ic">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg>
+          </div>
+          <h3>浏览器直输网址</h3>
+          <p>在电脑浏览器地址栏输入哔哩哔哩官网域名，回车后即进入 b站网页版首页，推荐、热门与分区入口都在首屏可见。</p>
+          <span class="go">适合首次访问</span>
+        </article>
+
+        <article class="entry-card">
+          <div class="entry-ic blue">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+          </div>
+          <h3>搜索结果进入</h3>
+          <p>通过搜索引擎查找站点名称，认准官方域名后点击结果进入。网页版的登录状态保存在浏览器中，下次访问通常无需重复登录。</p>
+          <span class="go">注意核对域名</span>
+        </article>
+
+        <article class="entry-card">
+          <div class="entry-ic violet">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          </div>
+          <h3>视频链接直达</h3>
+          <p>朋友分享的视频页链接在浏览器中打开后，同样属于 b站网页版的范围，可以直接播放、发弹幕，并顺势跳转到UP主主页。</p>
+          <span class="go">适合定向观看</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONES -->
+  <section class="block zones" id="zones">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-tag">Browse</span>
+        <h2>网页版里的主要浏览区域</h2>
+        <p class="sec-desc">b站网页版把内容组织成首页推荐、分区、动态与个人中心几块。了解每块的分工，找视频会快很多。</p>
+      </div>
+
+      <div class="zone-grid">
+        <div class="zone">
+          <div class="zone-top"><b>首页推荐</b><span class="num">默认</span></div>
+          <p>登录后按观看与互动情况推荐视频，未登录时也会展示热门内容，是停留时间最长的页面。</p>
+        </div>
+        <div class="zone">
+          <div class="zone-top"><b>分区频道</b><span class="num">分类</span></div>
+          <p>动画、番剧、游戏、知识、生活、科技等一级分区下再细分频道，适合有明确兴趣方向时使用。</p>
+        </div>
+        <div class="zone">
+          <div class="zone-top"><b>动态关注</b><span class="num">更新</span></div>
+          <p>已关注UP主的新投稿、转发与动态集中在这里，适合追更，不必反复搜索作者名称。</p>
+        </div>
+        <div class="zone">
+          <div class="zone-top"><b>个人中心</b><span class="num">管理</span></div>
+          <p>收藏夹、观看历史、稍后再看与账号设置集中存放，换设备登录后内容随账号同步。</p>
+        </div>
+      </div>
+
+      <div class="zone-list" aria-label="常见内容分类">
+        <span class="chip on">动画</span>
+        <span class="chip">番剧</span>
+        <span class="chip">游戏</span>
+        <span class="chip">知识</span>
+        <span class="chip">科技</span>
+        <span class="chip">生活</span>
+        <span class="chip">音乐</span>
+        <span class="chip">影视</span>
+        <span class="chip">舞蹈</span>
+        <span class="chip">美食</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="block" id="steps">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-tag">How to</span>
+        <h2>从打开页面到顺畅观看</h2>
+        <p class="sec-desc">第一次使用 b站网页版，按下面的顺序走一遍，基本就能把观看、互动与收藏串起来。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-no">STEP 01</div>
+          <h3>打开并登录</h3>
+          <p>浏览器进入首页后，右上角可扫码或账号登录。登录后才能同步收藏、历史并发送弹幕；只看视频不登录也能播放。</p>
+        </div>
+        <div class="step">
+          <div class="step-no">STEP 02</div>
+          <h3>找到想看的视频</h3>
+          <p>用顶部搜索框按标题或UP主查找，也可以从分区频道逐层进入。搜索结果可用排序与时长筛选缩小范围。</p>
+        </div>
+        <div class="step">
+          <div class="step-no">STEP 03</div>
+          <h3>播放与互动</h3>
+          <p>播放器支持清晰度切换、倍速与网页全屏。弹幕开关在播放器内，评论区位于视频下方，收藏按钮可把视频放进收藏夹。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" id="faq" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-tag">FAQ</span>
+        <h2>关于 b站网页版的常见疑问</h2>
+        <p class="sec-desc">网页版与客户端在功能覆盖上有差异，下面几条是最常被问到的。</p>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>网页版需要下载安装吗？</summary>
+          <p>不需要。b站网页版通过浏览器访问，电脑端打开网址即可使用。客户端与网页版可同时存在，登录同一账号后收藏与历史会保持一致。</p>
+        </details>
+        <details>
+          <summary>网页版能发弹幕和评论吗？</summary>
+          <p>登录账号后可以在播放器内发送弹幕，也能在视频下方发表评论。未登录状态下一般只能观看，互动功能需要先完成登录。</p>
+        </details>
+        <details>
+          <summary>为什么有些视频在网页版打不开？</summary>
+          <p>常见原因是视频已下架、仅限特定端播放，或当前地区与账号权限受限。可以先在搜索页确认视频状态，再尝试其他来源或稍后重试。</p>
+        </details>
+        <details>
+          <summary>收藏和历史记录会同步吗？</summary>
+          <p>只要登录的是同一个账号，收藏夹、观看历史与稍后再看会随账号同步。换一台电脑登录后，在个人中心即可看到此前的内容。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTE -->
+  <section class="block">
+    <div class="wrap">
+      <div class="note-band">
+        <div>
+          <h2>把 b站网页版当成日常观看的主入口</h2>
+          <p>电脑屏幕更大，适合看长视频、课程与直播回放；弹幕、评论与收藏集中在同一页面，找内容与做记录不必来回切换。习惯浏览器访问后，书签栏一个入口就能开始。</p>
+        </div>
+        <a class="btn btn-primary" href="#entry">回到入口方式</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="brand" style="gap:9px">
+          <span class="brand-mark" style="width:32px;height:32px;border-radius:9px" aria-hidden="true">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px">
+              <rect x="10" y="20" width="44" height="28" rx="8" fill="#ffffff"/>
+              <path d="M21 13l7 7M43 13l-7 7" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+              <rect x="19" y="29" width="9" height="7" rx="3" fill="#fb7299"/>
+              <rect x="36" y="29" width="9" height="7" rx="3" fill="#fb7299"/>
+            </svg>
+          </span>
+          <span class="brand-text">b站网页版</span>
+        </div>
+        <p>介绍 b站网页版的进入方式、浏览区域与观看互动步骤，帮助在电脑浏览器中更快找到想看的内容。</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>页面导航</h4>
+          <ul>
+            <li><a href="#entry">进入方式</a></li>
+            <li><a href="#zones">分区浏览</a></li>
+            <li><a href="#steps">使用步骤</a></li>
+            <li><a href="#faq">常见问题</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>相关主题</h4>
+          <ul>
+            <li><a href="#zones">网页版弹幕</a></li>
+            <li><a href="#steps">电脑端观看</a></li>
+            <li><a href="#faq">账号同步</a></li>
+            <li><a href="#top">回到顶部</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>b站网页版 · 浏览器观看与互动入口</span>
+      <span>内容以页面实际说明为准</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
