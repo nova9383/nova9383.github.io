@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>不良人研究所导航-不良人研究所网址导航_不良人研究资源入口</title>
+<meta name="description" content="不良人研究所导航收录不良人研究所常用入口与资源页面，提供清晰分类的网址导航，方便快速找到研究资料、官方渠道与社区讨论入口。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316181d'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23e0b055' stroke-width='3'/%3E%3Cpath d='M32 15v34M15 32h34' stroke='%23e0b055' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23e0b055'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#101217;
+  --bg-soft:#171a21;
+  --card:#1c2029;
+  --line:#2b313d;
+  --gold:#e0b055;
+  --gold-soft:#f0d29a;
+  --ink:#e9e6df;
+  --muted:#9aa1ae;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:min(1120px,92vw);margin:0 auto}
+
+/* 页头 */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(16,18,23,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.head-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:.5px}
+.logo .mark{width:34px;height:34px;flex:0 0 34px}
+.logo span.brand{color:var(--gold-soft)}
+nav.main{display:flex;gap:22px;font-size:14.5px;color:var(--muted);flex-wrap:wrap}
+nav.main a{position:relative;padding:4px 0;transition:color .2s}
+nav.main a:hover{color:var(--gold)}
+nav.main a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--gold);transition:width .25s}
+nav.main a:hover::after{width:100%}
+
+/* 首屏 */
+.hero{
+  position:relative;overflow:hidden;
+  padding:64px 0 56px;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(700px 340px at 82% 10%,rgba(224,176,85,.13),transparent 65%),
+    radial-gradient(560px 320px at 8% 92%,rgba(224,176,85,.07),transparent 60%);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;letter-spacing:2px;color:var(--gold);
+  border:1px solid rgba(224,176,85,.35);
+  padding:5px 12px;border-radius:999px;margin-bottom:20px;
+}
+h1{
+  font-size:clamp(28px,4.4vw,44px);
+  line-height:1.25;font-weight:800;letter-spacing:1px;
+  color:#fff;
+}
+h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{margin-top:18px;color:var(--muted);font-size:15.5px;max-width:38em}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;border-radius:999px;font-size:14.5px;font-weight:600;
+  transition:transform .2s,background .2s,color .2s;
+}
+.btn-solid{background:var(--gold);color:#1a1409}
+.btn-solid:hover{background:var(--gold-soft);transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn[aria-disabled="true"]{opacity:.6;cursor:not-allowed;pointer-events:none}
+.hero-art{justify-self:center;width:100%;max-width:330px}
+
+/* 通用区块 */
+section.block{padding:60px 0}
+.sec-head{margin-bottom:30px}
+.sec-head .kicker{font-size:12.5px;letter-spacing:2.5px;color:var(--gold);margin-bottom:8px}
+.sec-head h2{font-size:clamp(21px,2.6vw,27px);font-weight:700;letter-spacing:.5px}
+.sec-head p{color:var(--muted);font-size:14.5px;margin-top:10px;max-width:44em}
+
+/* 导航卡片 */
+.nav-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.nav-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;transition:border-color .2s,transform .2s,background .2s;
+  display:flex;flex-direction:column;gap:10px;
+}
+.nav-card:hover{border-color:rgba(224,176,85,.5);transform:translateY(-3px);background:#20242e}
+.nav-card .icon{width:38px;height:38px;border-radius:10px;background:rgba(224,176,85,.12);display:flex;align-items:center;justify-content:center}
+.nav-card h3{font-size:16px;font-weight:700}
+.nav-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
+.nav-card .go{margin-top:auto;font-size:13px;color:var(--gold);letter-spacing:.5px}
+
+/* 全文区块 */
+.panel{
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:18px;
+  padding:34px clamp(20px,4vw,44px);
+}
+.panel h2{font-size:clamp(20px,2.4vw,25px);margin-bottom:18px}
+.panel p{color:#c3c8d2;font-size:15px;margin-bottom:14px}
+.panel p:last-child{margin-bottom:0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+
+/* 条目列表 */
+.entry-list{display:grid;gap:14px}
+.entry{
+  display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:center;
+  background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;
+  transition:border-color .2s;
+}
+.entry:hover{border-color:rgba(224,176,85,.45)}
+.entry .num{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--gold);letter-spacing:1px}
+.entry h3{font-size:15.5px;font-weight:600}
+.entry p{font-size:13px;color:var(--muted);margin-top:3px}
+.entry .tag{font-size:12px;color:var(--gold-soft);border:1px solid rgba(224,176,85,.3);padding:3px 10px;border-radius:999px;white-space:nowrap}
+
+/* 提示条 */
+.notice{
+  border-left:3px solid var(--gold);
+  background:rgba(224,176,85,.07);
+  padding:18px 22px;border-radius:0 12px 12px 0;
+  font-size:14.5px;color:#cfd4dd;
+}
+.notice strong{color:var(--gold-soft)}
+
+/* FAQ */
+.faq{display:grid;gap:12px}
+details{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 20px;
+}
+details[open]{border-color:rgba(224,176,85,.4)}
+summary{cursor:pointer;font-size:15px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--gold);font-size:19px;line-height:1;transition:transform .2s}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;font-size:14px;color:var(--muted)}
+
+/* 页尾 */
+footer.site{
+  border-top:1px solid var(--line);
+  padding:40px 0 30px;background:#0c0e12;
+}
+.foot-grid{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:flex-start}
+.foot-brand{max-width:26em}
+.foot-brand .logo{margin-bottom:12px}
+.foot-brand p{font-size:13px;color:var(--muted)}
+.foot-links{display:flex;gap:40px;flex-wrap:wrap;font-size:13.5px}
+.foot-links h4{font-size:13px;color:var(--gold-soft);margin-bottom:10px;letter-spacing:1px}
+.foot-links a{display:block;color:var(--muted);padding:3px 0}
+.foot-links a:hover{color:var(--gold)}
+.copy{margin-top:30px;padding-top:18px;border-top:1px solid #1e222b;font-size:12.5px;color:#6c7382;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-art{order:-1;max-width:220px;justify-self:start}
+  .nav-grid{grid-template-columns:1fr 1fr}
+  .two-col{grid-template-columns:1fr;gap:22px}
+}
+@media(max-width:640px){
+  .head-inner{flex-direction:column;align-items:flex-start;gap:10px;padding:12px 0}
+  nav.main{gap:16px;font-size:13.5px}
+  .hero{padding:42px 0 38px}
+  .nav-grid{grid-template-columns:1fr}
+  .entry{grid-template-columns:1fr;gap:8px}
+  .entry .tag{justify-self:start}
+  section.block{padding:44px 0}
+  .foot-grid{flex-direction:column}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <a class="logo" href="#top" aria-label="不良人研究所导航">
+      <svg class="mark" viewBox="0 0 64 64" role="img" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1c2029"/>
+        <circle cx="32" cy="32" r="17" fill="none" stroke="#e0b055" stroke-width="2.6"/>
+        <path d="M32 15v34M15 32h34" stroke="#e0b055" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="32" cy="32" r="5" fill="#e0b055"/>
+      </svg>
+      <span class="brand">不良人研究所导航</span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#entry">常用入口</a>
+      <a href="#about">站点说明</a>
+      <a href="#list">资源分类</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">不良人 · 资源导航站</span>
+        <h1>不良人研究所导航</h1>
+        <p class="lead">把分散的不良人研究所相关页面收拢到一处。这里按用途整理入口，方便你从导航页出发，找到研究资料、官方渠道与社区讨论所在的位置，不用再反复搜索。</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#entry">进入常用入口</a>
+          <a class="btn btn-ghost" href="#list">查看资源分类</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 320 320" role="img">
+          <defs>
+            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#e0b055" stop-opacity=".28"/>
+              <stop offset="100%" stop-color="#e0b055" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="160" cy="160" r="140" fill="url(#glow)"/>
+          <circle cx="160" cy="160" r="104" fill="none" stroke="#2b313d" stroke-width="1.5"/>
+          <circle cx="160" cy="160" r="78" fill="none" stroke="#3a4150" stroke-width="1.5" stroke-dasharray="4 7"/>
+          <circle cx="160" cy="160" r="46" fill="none" stroke="#e0b055" stroke-width="2"/>
+          <path d="M160 114v92M114 160h92" stroke="#e0b055" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="160" cy="160" r="9" fill="#e0b055"/>
+          <circle cx="160" cy="56" r="4" fill="#e0b055"/>
+          <circle cx="264" cy="160" r="4" fill="#e0b055"/>
+          <circle cx="160" cy="264" r="4" fill="#e0b055"/>
+          <circle cx="56" cy="160" r="4" fill="#e0b055"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常用入口 -->
+  <section class="block" id="entry">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">QUICK ACCESS</div>
+        <h2>不良人研究所导航的常用入口</h2>
+        <p>按访问目的划分入口。每个卡片对应一种需求场景，点击即可跳转到本页对应的说明段落，先了解用途再决定去向。</p>
+      </div>
+      <div class="nav-grid">
+        <a class="nav-card" href="#list">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e0b055" stroke-width="1.8" stroke-linecap="round">
+              <path d="M4 6h16M4 12h16M4 18h10"/>
+            </svg>
+          </span>
+          <h3>资料检索</h3>
+          <p>需要查设定、看剧情梳理或找图文资料时，从这里进入资源分类，按内容类型逐项查找。</p>
+          <span class="go">前往资源分类 →</span>
+        </a>
+        <a class="nav-card" href="#about">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e0b055" stroke-width="1.8" stroke-linecap="round">
+              <circle cx="12" cy="12" r="8"/><path d="M12 8v.01M12 11v5"/>
+            </svg>
+          </span>
+          <h3>站点说明</h3>
+          <p>想弄清不良人研究所导航收录什么、不收录什么，以及入口的更新与失效处理方式。</p>
+          <span class="go">阅读站点说明 →</span>
+        </a>
+        <a class="nav-card" href="#faq">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e0b055" stroke-width="1.8" stroke-linecap="round">
+              <path d="M9 9a3 3 0 1 1 4 2.8c-.9.4-1 1.2-1 2.2M12 17v.01"/>
+              <circle cx="12" cy="12" r="9"/>
+            </svg>
+          </span>
+          <h3>常见问题</h3>
+          <p>入口打不开、分类找不到、如何反馈链接变动，集中回答导航使用中的高频疑问。</p>
+          <span class="go">查看常见问题 →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 资源分类 -->
+  <section class="block" id="list">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">CATEGORIES</div>
+        <h2>资源分类与查找顺序</h2>
+        <p>不良人研究所导航把入口分成四类。建议按「研究资料 → 官方渠道 → 社区讨论 → 工具与收藏」的顺序查找，先确认内容来源，再看讨论。</p>
+      </div>
+      <div class="entry-list">
+        <div class="entry">
+          <span class="num">01</span>
+          <div>
+            <h3>研究资料</h3>
+            <p>设定整理、人物关系梳理、剧情时间线等文字型内容，适合做剧情回顾与背景查阅。</p>
+          </div>
+          <span class="tag">文字为主</span>
+        </div>
+        <div class="entry">
+          <span class="num">02</span>
+          <div>
+            <h3>官方渠道</h3>
+            <p>作品方公开的动态与发布信息，作为判断消息真伪的参照，优先级高于二手转述。</p>
+          </div>
+          <span class="tag">来源优先</span>
+        </div>
+        <div class="entry">
+          <span class="num">03</span>
+          <div>
+            <h3>社区讨论</h3>
+            <p>观众对剧情走向、人物设定的讨论帖与合集，适合看不同解读，注意区分观点与事实。</p>
+          </div>
+          <span class="tag">观点交流</span>
+        </div>
+        <div class="entry">
+          <span class="num">04</span>
+          <div>
+            <h3>工具与收藏</h3>
+            <p>图片浏览、内容收藏等辅助页面，用于保存感兴趣的资料，便于下次直接回到原页面。</p>
+          </div>
+          <span class="tag">辅助使用</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 站点说明 -->
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="panel">
+        <h2>关于不良人研究所导航</h2>
+        <div class="two-col">
+          <div>
+            <p>不良人研究所导航是一个以入口整理为主的导航页。它本身不生产研究内容，而是把与不良人研究所相关的可访问页面按用途归类，帮助访问者减少在搜索框里反复试错的时间。</p>
+            <p>导航收录的对象以页面为单位，描述写清用途与性质，不替页面内容作评价。看到「研究资料」类入口，说明该页面偏文字梳理；看到「社区讨论」类入口，说明内容以观众观点为主，需要自行判断。</p>
+          </div>
+          <div>
+            <p>入口链接会随页面可用性调整。若某个地址长期无法访问，导航会把它从常用位置移出，或标注为暂停收录，避免访问者反复点击无效入口。</p>
+            <p>不良人研究所导航不存储、不转载第三方页面内容，所有内容版权归原页面所有。导航只提供跳转路径，访问后的阅读与使用以目标页面的规则为准。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用建议 -->
+  <section class="block">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">HOW TO USE</div>
+        <h2>这样使用导航更省时间</h2>
+      </div>
+      <div class="notice">
+        <strong>先定需求再选分类：</strong>查设定走研究资料，追动态看官方渠道，找解读进社区讨论。三类内容的信息可靠程度不同，混在一起看容易把讨论当成结论。遇到说法冲突时，回到官方渠道核对原始表述，再决定是否采信。
+      </div>
+      <div class="two-col" style="margin-top:26px">
+        <div class="panel" style="padding:26px">
+          <h2 style="font-size:18px">查找顺序</h2>
+          <p>第一次使用不良人研究所导航，建议从资源分类逐项浏览，建立对入口分布的整体印象。之后可直接用首屏的常用入口跳转。</p>
+          <p>需要长期回访的页面，建议用浏览器收藏保存原地址，而不是每次都从导航页进入。</p>
+        </div>
+        <div class="panel" style="padding:26px">
+          <h2 style="font-size:18px">入口失效</h2>
+          <p>如果发现某个入口无法打开，可以先刷新重试，再检查是否为网络环境问题。确认是地址变动后，可通过常见问题中的方式反馈。</p>
+          <p>反馈时写明入口名称与出现问题的日期，便于定位与替换。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">FAQ</div>
+        <h2>常见问题</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>不良人研究所导航收录哪些页面？</summary>
+          <p>主要收录研究资料、官方渠道、社区讨论与辅助工具四类页面。收录以用途清晰、可正常访问为前提，不收录需要额外授权或来源不明的地址。</p>
+        </details>
+        <details>
+          <summary>导航页上的内容会定期更新吗？</summary>
+          <p>入口会随可用情况调整。新增或替换的入口会更新在资源分类中；长期无法访问的地址会被移出常用位置，避免占用视线。</p>
+        </details>
+        <details>
+          <summary>为什么有的入口只有说明没有直达链接？</summary>
+          <p>部分页面需要登录或有访问限制，导航只保留用途说明，不提供跳转，以免访问者点进去后无法继续。具体以页面说明为准。</p>
+        </details>
+        <details>
+          <summary>可以把不良人研究所导航设为浏览器主页吗？</summary>
+          <p>可以。在浏览器设置中将本页地址设为主页或书签，之后打开浏览器即可直接进入导航页，再按分类前往目标页面。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#top">
+          <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#1c2029"/>
+            <circle cx="32" cy="32" r="17" fill="none" stroke="#e0b055" stroke-width="2.6"/>
+            <path d="M32 15v34M15 32h34" stroke="#e0b055" stroke-width="2.6" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="5" fill="#e0b055"/>
+          </svg>
+          <span class="brand">不良人研究所导航</span>
+        </a>
+        <p>不良人研究所导航以入口整理为主，帮助访问者按用途找到研究资料、官方渠道与社区讨论页面，减少重复搜索。</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>页面导航</h4>
+          <a href="#entry">常用入口</a>
+          <a href="#list">资源分类</a>
+          <a href="#about">站点说明</a>
+          <a href="#faq">常见问题</a>
+        </div>
+        <div>
+          <h4>使用提示</h4>
+          <a href="#about">收录范围</a>
+          <a href="#faq">入口失效反馈</a>
+          <a href="#top">返回顶部</a>
+        </div>
+      </div>
+    </div>
+    <div class="copy">
+      <span>不良人研究所导航 · 入口整理与资源分类</span>
+      <span>本页仅提供跳转路径，内容版权归原页面所有</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
