@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>影视大全-影视大全在线观看_影视大全免费电影电视剧资源</title>
+<meta name="description" content="影视大全首页汇聚电影、电视剧、综艺、动漫等各类影视内容入口，提供片库分类、热度榜单与观影指南，帮助你快速找到想看的影视资源。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101828'/%3E%3Cpath d='M14 20h36v6H14zM14 32h22v6H14zM14 44h28v6H14z' fill='%23e8b04b'/%3E%3Ccircle cx='48' cy='44' r='8' fill='%23e8b04b'/%3E%3Cpath d='M45 40l7 4-7 4z' fill='%23101828'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0e1420;
+  --bg-soft:#151d2c;
+  --card:#1a2333;
+  --line:#2a3548;
+  --text:#e9eef6;
+  --muted:#9aa8bd;
+  --gold:#e8b04b;
+  --gold-soft:#f3cf8c;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:min(1140px,92vw);margin:0 auto}
+
+/* header */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(14,20,32,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;padding:12px 0;flex-wrap:wrap;
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:38px;height:38px;flex:none}
+.logo-text{font-size:1.2rem;font-weight:700;letter-spacing:.04em;color:var(--gold)}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{
+  font-size:.92rem;color:var(--muted);
+  padding:6px 12px;border-radius:8px;transition:.2s;
+}
+.nav a:hover{color:var(--text);background:var(--bg-soft)}
+.nav a.active{color:var(--gold);background:rgba(232,176,75,.1)}
+
+/* hero */
+.hero{
+  position:relative;overflow:hidden;
+  padding:64px 0 56px;
+  background:
+    radial-gradient(900px 380px at 82% -10%,rgba(232,176,75,.16),transparent 60%),
+    radial-gradient(700px 340px at 8% 110%,rgba(88,132,214,.14),transparent 62%),
+    linear-gradient(180deg,#111a29,#0e1420);
+  border-bottom:1px solid var(--line);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.25fr .85fr;gap:48px;align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.8rem;color:var(--gold-soft);
+  border:1px solid rgba(232,176,75,.35);
+  padding:4px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+h1{
+  font-size:clamp(1.9rem,4.4vw,2.9rem);
+  line-height:1.25;font-weight:800;letter-spacing:.02em;
+}
+h1 .hl{color:var(--gold)}
+.hero-desc{
+  margin-top:16px;color:var(--muted);font-size:1rem;max-width:34em;
+}
+.hero-actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;border-radius:10px;font-size:.95rem;font-weight:600;
+  transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--gold);color:#141a24}
+.btn-primary:hover{background:var(--gold-soft)}
+.btn-ghost{border-color:var(--line);color:var(--muted)}
+.btn-ghost:hover{color:var(--text);border-color:var(--gold)}
+.hero-stats{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap}
+.hero-stats div strong{display:block;color:var(--gold);font-size:1.3rem;font-weight:800;line-height:1.3}
+.hero-stats div span{font-size:.82rem;color:var(--muted)}
+.hero-art{
+  background:var(--card);border:1px solid var(--line);border-radius:20px;
+  padding:18px;box-shadow:0 24px 60px -30px rgba(0,0,0,.9);
+}
+.art-row{display:flex;gap:10px;margin-bottom:10px}
+.art-poster{
+  flex:1;aspect-ratio:3/4;border-radius:10px;
+  background:linear-gradient(160deg,#2b3a55,#1b2434);
+  border:1px solid var(--line);
+  display:flex;align-items:flex-end;padding:10px;
+  font-size:.72rem;color:var(--muted);
+}
+.art-poster.gold{background:linear-gradient(160deg,#4a3a1c,#2a2114);border-color:rgba(232,176,75,.4);color:var(--gold-soft)}
+.art-bar{height:8px;border-radius:6px;background:#243044;margin-top:10px}
+.art-bar.w60{width:60%}
+.art-bar.w40{width:40%;background:rgba(232,176,75,.45)}
+
+/* sections */
+section{padding:64px 0}
+.sec-head{margin-bottom:32px}
+.sec-kicker{font-size:.78rem;letter-spacing:.18em;color:var(--gold);font-weight:700}
+h2{font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:800;margin-top:6px}
+.sec-head p{color:var(--muted);margin-top:10px;max-width:44em;font-size:.95rem}
+
+/* category cards */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cat-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 20px;transition:.22s;
+}
+.cat-card:hover{border-color:rgba(232,176,75,.5);transform:translateY(-3px)}
+.cat-card .icon{width:34px;height:34px;margin-bottom:14px}
+.cat-card h3{font-size:1.02rem;font-weight:700;margin-bottom:6px}
+.cat-card p{font-size:.85rem;color:var(--muted);line-height:1.65}
+.cat-card .count{display:inline-block;margin-top:12px;font-size:.76rem;color:var(--gold-soft)}
+
+/* hot list */
+.hot-wrap{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:start}
+.panel{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;
+}
+.panel h3{font-size:1.05rem;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.panel h3::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--gold)}
+.hot-item{
+  display:flex;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line);align-items:center;
+}
+.hot-item:last-child{border-bottom:none}
+.rank{
+  flex:none;width:26px;height:26px;border-radius:7px;
+  display:grid;place-items:center;font-size:.8rem;font-weight:700;
+  background:var(--bg-soft);color:var(--muted);
+}
+.rank.top{background:var(--gold);color:#141a24}
+.hot-item .meta strong{font-size:.94rem;font-weight:600;display:block}
+.hot-item .meta span{font-size:.78rem;color:var(--muted)}
+.hot-item .score{margin-left:auto;font-size:.82rem;color:var(--gold-soft);font-weight:700}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px}
+.tag{
+  font-size:.8rem;padding:5px 12px;border-radius:999px;
+  background:var(--bg-soft);color:var(--muted);border:1px solid var(--line);
+}
+.tag:hover{color:var(--gold);border-color:rgba(232,176,75,.5)}
+.note{font-size:.84rem;color:var(--muted);margin-top:16px;line-height:1.7}
+
+/* guide */
+.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.guide-card{
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;
+}
+.guide-card .num{font-size:.78rem;color:var(--gold);font-weight:700;letter-spacing:.1em}
+.guide-card h3{font-size:1rem;margin:10px 0 8px}
+.guide-card p{font-size:.86rem;color:var(--muted)}
+
+/* search */
+.search-bar{
+  display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;
+}
+.search-bar input{
+  flex:1;min-width:200px;
+  background:var(--bg-soft);border:1px solid var(--line);
+  color:var(--text);padding:12px 16px;border-radius:10px;font-size:.92rem;outline:none;
+  font-family:inherit;
+}
+.search-bar input:focus{border-color:var(--gold)}
+.search-bar button{
+  padding:12px 24px;border-radius:10px;border:none;cursor:pointer;
+  background:var(--gold);color:#141a24;font-weight:700;font-size:.92rem;font-family:inherit;
+}
+.search-bar button:hover{background:var(--gold-soft)}
+#searchResult{font-size:.88rem;color:var(--gold-soft);margin-top:14px;min-height:22px}
+
+/* download */
+.dl-block{
+  display:flex;justify-content:space-between;align-items:center;gap:24px;
+  background:linear-gradient(120deg,#1b2434,#151d2c);
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px;flex-wrap:wrap;
+}
+.dl-block h2{font-size:1.25rem;margin:0}
+.dl-block p{color:var(--muted);font-size:.88rem;margin-top:8px;max-width:36em}
+.dl-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:#141a24;font-weight:700;
+  padding:12px 28px;border-radius:10px;font-size:.95rem;
+  pointer-events:none;opacity:.95;
+}
+
+/* footer */
+.site-footer{
+  border-top:1px solid var(--line);background:#0b111b;
+  padding:40px 0 28px;margin-top:20px;
+}
+.footer-top{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:26px}
+.footer-brand{max-width:32em}
+.footer-brand .logo-text{font-size:1.05rem}
+.footer-brand p{color:var(--muted);font-size:.84rem;margin-top:10px;line-height:1.75}
+.footer-links{display:flex;gap:36px;flex-wrap:wrap}
+.footer-links div h4{font-size:.86rem;margin-bottom:10px;color:var(--text)}
+.footer-links div a{display:block;font-size:.82rem;color:var(--muted);margin-bottom:6px}
+.footer-links div a:hover{color:var(--gold)}
+.copyright{
+  border-top:1px solid var(--line);padding-top:18px;
+  font-size:.78rem;color:#6b788c;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-art{order:-1;max-width:420px}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .hot-wrap{grid-template-columns:1fr}
+  .guide-grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .header-inner{padding:10px 0}
+  .nav a{padding:5px 9px;font-size:.85rem}
+  section{padding:46px 0}
+  .hero{padding:44px 0 40px}
+  .cat-grid{grid-template-columns:1fr}
+  .hero-stats{gap:20px}
+  .dl-block{padding:22px}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top" aria-label="影视大全首页">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#101828"/>
+        <path d="M14 20h36v6H14zM14 32h22v6H14zM14 44h28v6H14z" fill="#e8b04b"/>
+        <circle cx="48" cy="44" r="8" fill="#e8b04b"/>
+        <path d="M45 40l7 4-7 4z" fill="#101828"/>
+      </svg>
+      <span class="logo-text">影视大全</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#top" class="active">首页</a>
+      <a href="#category">片库分类</a>
+      <a href="#hot">热播榜单</a>
+      <a href="#guide">观影指引</a>
+      <a href="#search">资源检索</a>
+      <a href="#footer">关于</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-tag">电影 · 剧集 · 综艺 · 动漫</span>
+        <h1>影视大全</h1>
+        <p class="hero-desc">影视大全是一个按类型聚合影视内容的导航型首页。电影、电视剧、综艺、动漫、纪录片在此归入统一片库，你可以从分类入口、热度榜单或关键词检索三条路径抵达想看的作品。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#category">进入片库分类</a>
+          <a class="btn btn-ghost" href="#hot">查看热播榜单</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>5</strong><span>内容大类</span></div>
+          <div><strong>3</strong><span>浏览路径</span></div>
+          <div><strong>每日</strong><span>榜单更新节奏</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-row">
+          <div class="art-poster gold">电影</div>
+          <div class="art-poster">剧集</div>
+          <div class="art-poster">综艺</div>
+        </div>
+        <div class="art-row">
+          <div class="art-poster">动漫</div>
+          <div class="art-poster gold">纪录</div>
+          <div class="art-poster">短片</div>
+        </div>
+        <div class="art-bar w60"></div>
+        <div class="art-bar w40"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="category">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-kicker">CATEGORY</span>
+        <h2>片库分类：按类型进入影视大全</h2>
+        <p>影视大全把内容按形态拆成五个入口，每类下方标注常见子类型，方便你从熟悉的门类开始浏览，而不是在混杂列表中翻找。</p>
+      </div>
+      <div class="cat-grid">
+        <a class="cat-card" href="#hot">
+          <svg class="icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="7" width="26" height="18" rx="3" fill="none" stroke="#e8b04b" stroke-width="2"/><path d="M13 12l7 4-7 4z" fill="#e8b04b"/></svg>
+          <h3>电影</h3>
+          <p>剧情、动作、喜剧、科幻与悬疑长片，按上映年份与地区细分。</p>
+          <span class="count">长片内容入口</span>
+        </a>
+        <a class="cat-card" href="#hot">
+          <svg class="icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="6" width="24" height="16" rx="2" fill="none" stroke="#e8b04b" stroke-width="2"/><path d="M11 25h10M16 22v3" stroke="#e8b04b" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3>电视剧</h3>
+          <p>国产剧、港台剧、日韩剧与欧美剧，可依集数与更新状态筛选。</p>
+          <span class="count">连载与完结剧集</span>
+        </a>
+        <a class="cat-card" href="#hot">
+          <svg class="icon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="#e8b04b" stroke-width="2"/><path d="M16 10v6l4 3" stroke="#e8b04b" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3>综艺</h3>
+          <p>真人秀、访谈、音乐与竞技类节目，按播出季与平台归集。</p>
+          <span class="count">季播节目入口</span>
+        </a>
+        <a class="cat-card" href="#hot">
+          <svg class="icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5l3 7 7 .8-5.2 4.8 1.5 7L16 21l-6.3 3.6 1.5-7L6 12.8 13 12z" fill="none" stroke="#e8b04b" stroke-width="2" stroke-linejoin="round"/></svg>
+          <h3>动漫</h3>
+          <p>国漫、日漫与欧美动画，区分剧场版与季番两类形态。</p>
+          <span class="count">动画内容入口</span>
+        </a>
+        <a class="cat-card" href="#hot">
+          <svg class="icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="8" width="22" height="14" rx="2" fill="none" stroke="#e8b04b" stroke-width="2"/><path d="M9 12h8M9 16h6" stroke="#e8b04b" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3>纪录片</h3>
+          <p>自然、人文、历史与科技题材，多为系列化专题内容。</p>
+          <span class="count">专题纪录入口</span>
+        </a>
+        <a class="cat-card" href="#hot">
+          <svg class="icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 24V10l10 7 10-7v14" fill="none" stroke="#e8b04b" stroke-width="2" stroke-linejoin="round"/></svg>
+          <h3>短片与微电影</h3>
+          <p>短片合集、学生作品与实验影像，时长集中在数十分钟内。</p>
+          <span class="count">短内容入口</span>
+        </a>
+        <a class="cat-card" href="#hot">
+          <svg class="icon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="none" stroke="#e8b04b" stroke-width="2"/><circle cx="22" cy="20" r="5" fill="none" stroke="#e8b04b" stroke-width="2"/></svg>
+          <h3>经典回顾</h3>
+          <p>年代较早、评价稳定的作品，适合按年代与导演索引。</p>
+          <span class="count">老片入口</span>
+        </a>
+        <a class="cat-card" href="#hot">
+          <svg class="icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M8 8h16v16H8z" fill="none" stroke="#e8b04b" stroke-width="2"/><path d="M12 12h8v8h-8z" fill="#e8b04b"/></svg>
+          <h3>专题合集</h3>
+          <p>按主题、演员或奖项聚合的片单，供连续观看使用。</p>
+          <span class="count">策展片单入口</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="hot">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-kicker">RANKING</span>
+        <h2>热播榜单与标签速览</h2>
+        <p>榜单反映站内浏览与收藏的相对活跃程度，用于辅助发现，不代表作品质量评价。标签区则从题材、地区与年份三个维度提供横向切换。</p>
+      </div>
+      <div class="hot-wrap">
+        <div class="panel">
+          <h3>站内热度前列</h3>
+          <div class="hot-item">
+            <span class="rank top">1</span>
+            <div class="meta"><strong>都市剧情长片合集</strong><span>电影 · 剧情 · 近期浏览上升</span></div>
+            <span class="score">9.1</span>
+          </div>
+          <div class="hot-item">
+            <span class="rank top">2</span>
+            <div class="meta"><strong>悬疑推理剧集专题</strong><span>电视剧 · 悬疑 · 多季连载</span></div>
+            <span class="score">8.9</span>
+          </div>
+          <div class="hot-item">
+            <span class="rank top">3</span>
+            <div class="meta"><strong>音乐竞演综艺季</strong><span>综艺 · 音乐 · 季播更新</span></div>
+            <span class="score">8.7</span>
+          </div>
+          <div class="hot-item">
+            <span class="rank">4</span>
+            <div class="meta"><strong>奇幻冒险动画季番</strong><span>动漫 · 冒险 · 周更</span></div>
+            <span class="score">8.6</span>
+          </div>
+          <div class="hot-item">
+            <span class="rank">5</span>
+            <div class="meta"><strong>自然生态纪录片系列</strong><span>纪录片 · 自然 · 全集</span></div>
+            <span class="score">8.5</span>
+          </div>
+          <div class="hot-item">
+            <span class="rank">6</span>
+            <div class="meta"><strong>年代经典修复片单</strong><span>经典 · 修复 · 专题</span></div>
+            <span class="score">8.4</span>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>常用筛选标签</h3>
+          <div class="tag-list">
+            <a class="tag" href="#category">剧情</a>
+            <a class="tag" href="#category">喜剧</a>
+            <a class="tag" href="#category">动作</a>
+            <a class="tag" href="#category">科幻</a>
+            <a class="tag" href="#category">悬疑</a>
+            <a class="tag" href="#category">爱情</a>
+            <a class="tag" href="#category">国产</a>
+            <a class="tag" href="#category">日韩</a>
+            <a class="tag" href="#category">欧美</a>
+            <a class="tag" href="#category">港台</a>
+            <a class="tag" href="#category">高清</a>
+            <a class="tag" href="#category">全集</a>
+            <a class="tag" href="#category">连载中</a>
+            <a class="tag" href="#category">已完结</a>
+          </div>
+          <p class="note">标签之间可组合使用：例如先选“悬疑”再限定“国产”，可缩小到具体题材范围。影视大全的标签体系以内容属性为主，不按播放渠道划分。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-kicker">GUIDE</span>
+        <h2>观影指引：三条路径用好影视大全</h2>
+        <p>面对体量较大的片库，按目的选择路径比逐条浏览更高效。以下三种方式分别对应“不确定看什么”“知道类型”“记得关键词”三类场景。</p>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <span class="num">路径 01</span>
+          <h3>从榜单出发</h3>
+          <p>不知道看什么时，先看热播榜单的题材分布，再点进分类页核对年份与地区。榜单适合快速缩小范围，最终选择仍以个人偏好为准。</p>
+        </div>
+        <div class="guide-card">
+          <span class="num">路径 02</span>
+          <h3>按分类逐层筛选</h3>
+          <p>明确想看剧集或动漫后，进入对应分类，叠加题材与完结状态。影视大全的分类层级建议不超过三级，避免筛选过细导致结果为空。</p>
+        </div>
+        <div class="guide-card">
+          <span class="num">路径 03</span>
+          <h3>用关键词直达</h3>
+          <p>记得片名片段、演员或导演时，直接使用检索框。结果按匹配度排列，片名完全匹配的条目排在前面，模糊匹配随后展示。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="search">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-kicker">SEARCH</span>
+        <h2>资源检索</h2>
+        <p>在本页可检索的范围内输入片名或题材关键词，下方会给出对应的分类与榜单入口提示。检索结果仅作导航，不提供播放地址。</p>
+      </div>
+      <form class="search-bar" id="searchForm" role="search">
+        <input type="text" id="searchInput" placeholder="输入片名或题材，例如：悬疑、纪录片、动画" aria-label="检索影视内容">
+        <button type="submit">检索</button>
+      </form>
+      <p id="searchResult" role="status" aria-live="polite"></p>
+
+      <div class="dl-block" style="margin-top:36px">
+        <div>
+          <h2>影视大全桌面端索引</h2>
+          <p>将片库分类与标签结构打包为本地索引文件，便于离线查阅分类对照。下载入口正在准备中，上线后此处可直接获取。</p>
+        </div>
+        <a class="dl-btn" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo-text">影视大全</span>
+        <p>影视大全以分类聚合与榜单导航为核心，帮助访问者在电影、剧集、综艺与动漫之间快速定位内容。本页仅提供索引与检索提示，不托管影视文件，作品信息以各内容方公开资料为准。</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>浏览</h4>
+          <a href="#category">片库分类</a>
+          <a href="#hot">热播榜单</a>
+          <a href="#guide">观影指引</a>
+        </div>
+        <div>
+          <h4>使用</h4>
+          <a href="#search">资源检索</a>
+          <a href="#top">返回顶部</a>
+          <a href="#category">专题合集</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>© 影视大全 · 内容索引与导航</span>
+      <span>作品信息以官方发布为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('searchForm');
+  var input = document.getElementById('searchInput');
+  var out = document.getElementById('searchResult');
+  var map = [
+    {keys:['悬疑','推理','刑侦'], tip:'建议前往「片库分类 → 电视剧」，叠加“悬疑”标签，再按完结状态筛选。'},
+    {keys:['纪录','自然','人文','历史'], tip:'建议前往「片库分类 → 纪录片」，专题类条目多为系列化内容。'},
+    {keys:['动画','动漫','番','国漫','日漫'], tip:'建议前往「片库分类 → 动漫」，可区分剧场版与季番两类形态。'},
+    {keys:['综艺','真人秀','访谈','音乐'], tip:'建议前往「片库分类 → 综艺」，季播节目按播出季归集。'},
+    {keys:['电影','长片','剧情','科幻','动作'], tip:'建议前往「片库分类 → 电影」，再按年份或地区缩小范围。'},
+    {keys:['剧','电视剧','连载','全集'], tip:'建议前往「片库分类 → 电视剧」，查看连载与完结状态。'},
+    {keys:['经典','老片','修复'], tip:'建议前往「片库分类 → 经典回顾」，按年代或导演索引。'},
+    {keys:['专题','片单','合集'], tip:'建议前往「片库分类 → 专题合集」，适合连续观看。'}
+  ];
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var q = input.value.trim();
+    if(!q){
+      out.textContent = '请输入片名或题材关键词后再检索。';
+      return;
+    }
+    var hit = null;
+    for(var i=0;i<map.length;i++){
+      for(var j=0;j<map[i].keys.length;j++){
+        if(q.indexOf(map[i].keys[j]) > -1){ hit = map[i]; break; }
+      }
+      if(hit) break;
+    }
+    if(hit){
+      out.textContent = '“' + q + '”：' + hit.tip;
+    }else{
+      out.textContent = '“' + q + '”未匹配到内置分类提示，可先浏览「热播榜单」或前往「片库分类」逐层筛选。';
+    }
+  });
+})();
+</script>
+</body>
+</html>
